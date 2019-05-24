@@ -1,1 +1,1 @@
-# GildedRose-Refactoring-Kata-Python
+# GildedRose Refactoring Kata Python
