@@ -1,5 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 from __future__ import print_function
+import numpy as np
+import pandas
 
 from gilded_rose import *
 
@@ -23,14 +25,22 @@ if __name__ == "__main__":
              Item(name="Conjured Mana Cake", sell_in=-2, quality=6)
             ]
 
-    days = 2
-    import sys
-    if len(sys.argv) > 1:
-        days = int(sys.argv[1]) + 1
-    for day in range(days):
-        print("-------- day %s --------" % day)
-        print("name, sellIn, quality")
+    for day in range(2):
+
+        print("\n____________________________ day %s ____________________________\n" % day)
+
+        # ######################################################################
+        # Create table values
+        # ######################################################################
+
+        itemsValues = []
         for item in items:
-            print(item)
-        print("")
+            itemsValues += [[item.name, item.sell_in, item.quality]]
+
+        teams_list = ["name", "sellIn", "quality"]
+        data = np.array(itemsValues)
+        table = pandas.DataFrame(itemsValues, columns = teams_list)
+        print(str(table))
+
+
         GildedRose(items).update_quality()
