@@ -5,10 +5,9 @@ import pandas
 
 from gilded_rose import *
 
-if __name__ == "__main__":
-    print ("OMGHAI!")
-    items = [
-             Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
+def create_tables():
+
+    items = [Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
              Item(name="+5 Dexterity Vest", sell_in=-10, quality=20),
              Item(name="Aged Brie", sell_in=2, quality=0),
              Item(name="Aged Brie", sell_in=2, quality=50),
@@ -22,12 +21,12 @@ if __name__ == "__main__":
              Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=0, quality=20),
              Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-5, quality=20),
              Item(name="Conjured Mana Cake", sell_in=3, quality=6),
-             Item(name="Conjured Mana Cake", sell_in=-2, quality=6)
-            ]
+             Item(name="Conjured Mana Cake", sell_in=-2, quality=6)]
 
+    tables_content = ""
     for day in range(2):
 
-        print("\n____________________________ day %s ____________________________\n" % day)
+        tables_content += "\n____________________________ day %s ____________________________\n" % day
 
         # ######################################################################
         # Create table values
@@ -40,7 +39,12 @@ if __name__ == "__main__":
         teams_list = ["name", "sellIn", "quality"]
         data = np.array(itemsValues)
         table = pandas.DataFrame(itemsValues, columns = teams_list)
-        print(str(table))
+        tables_content += str(table) + "\n"
 
 
         GildedRose(items).update_quality()
+
+    return tables_content
+
+if __name__ == "__main__":
+    print(create_tables())
