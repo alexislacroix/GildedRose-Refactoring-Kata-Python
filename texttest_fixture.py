@@ -26,7 +26,9 @@ def create_tables():
     tables_content = ""
     for day in range(2):
 
-        tables_content += "\n____________________________ day %s ____________________________\n" % day
+        tables_content += "\n____________________________"
+        tables_content += " day %s " % day
+        tables_content += "____________________________\n"
 
         # ######################################################################
         # Create table values
@@ -47,4 +49,59 @@ def create_tables():
     return tables_content
 
 if __name__ == "__main__":
-    print(create_tables())
+
+    # ##########################################################################
+    # Import contents to compare
+    # ##########################################################################
+
+    # create content to test
+    test = create_tables()
+    lines_test = test.split("\n")
+    nbr_test = len(lines_test)
+
+    # import text from GoldenMaster file to verify
+    f = open("golden_master.txt","r")
+    gold = f.read()
+    lines_gold = gold.split("\n")
+    nbr_gold = len(lines_gold)
+    f.close()
+
+    # ##########################################################################
+    # Find errors
+    # ##########################################################################
+
+    # enumerate errors
+    errors = []
+
+    if nbr_test != nbr_gold:
+        print("The number of line is not the same")
+
+    else:
+        for line in range(nbr_test):
+            lt = lines_test[line]
+            lg = lines_gold[line]
+
+            if  lt != lg :
+                errors += [(line, lt, lg)]
+
+
+    # ##########################################################################
+    # Display  errors
+    # ##########################################################################
+
+    nbr_error = len(errors)
+
+    print("##########################################")
+    print("############### %s error(s) ############### " % nbr_error)
+    print("##########################################")
+    print("")
+
+    for info in errors:
+        n_line = info[0]
+        current_line = info[1]
+        desired_line = info[2]
+
+        print("############## error line %s ##############" % n_line)
+        print("current: %s" % current_line)
+        print("desired: %s" % desired_line)
+        print("\n")
