@@ -32,5 +32,5 @@ ____________________________ day 1 ____________________________
 10  Backstage passes to a TAFKAL80ETC concert       4       23
 11  Backstage passes to a TAFKAL80ETC concert      -1        0
 12  Backstage passes to a TAFKAL80ETC concert      -6        0
-13                         Conjured Mana Cake       2        5
-14                         Conjured Mana Cake      -3        4
+13                         Conjured Mana Cake       2        4
+14                         Conjured Mana Cake      -3        2
